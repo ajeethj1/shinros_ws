@@ -1,0 +1,315 @@
+
+#:import Snackbar kivymd.uix.snackbar.Snackbar
+#:import get_color_from_hex kivy.utils.get_color_from_hex
+WindowManager:
+    id : screenmanager
+    HomeWidget:
+        name:"Home"
+
+    UserWidget:
+        name:"User"
+
+    VisitorScreen:
+        name:"Visitor"
+        id:Visitor
+    AdminScreen:
+        name:"Admin"
+        id:Admin
+
+
+<HomeWidget>:
+   
+    
+    MDCard:   
+        size_hint: .9,.9
+        md_bg_color: [0,0,0,1]
+        bg:app.theme_cls.bg_darkest
+        pos_hint: {'center_x': 0.5,'center_y':0.5}
+    
+    Button:
+        
+        text:' '
+        pos: self.pos
+        size: self.size
+        
+        background_color: 0, 0, 0, 0
+        on_release:
+            app.root.current = "User"
+            root.manager.transition.direction = "left"
+    
+    Image:
+        source:'image/shinros_logo.gif'
+        size_hint: 0.6,0.4
+        pos_hint: {'center_x': 0.5,'y':0.5}
+        allow_stretch: True
+        anim_loop: 1
+        mimap:True
+
+    Label:
+        font_size: 40
+        background_color: 1, 1, 0, 1
+        background_normal: ""
+        text:'Autonomous Visitor Guidance Robot' 
+        bold:True
+        pos_hint: {'center_x': 0.5,'center_y':0.50}
+        color: 1, 1 , 1 , 1
+
+    Label:
+        font_size: 30
+        background_color: 1, 1, 0, 1
+        background_normal: ""
+        text:'Welcome' 
+        font_size:
+        pos_hint: {'center_x': 0.5,'center_y':0.35}
+        color: 1, 1 , 1 , 1
+
+    Label:
+        font_size: 20
+
+        background_color: 1, 1, 0, 1
+        background_normal: ""
+        text:'Click Here' 
+        pos_hint: {'center_x': 0.5,'center_y':0.20}
+        color: 1 , 1 , 1 , 1
+
+<UserWidget>:
+    MDCard:
+        size_hint: .8,.8
+        
+        pos_hint: {'center_x': 0.5,'center_y':0.5}
+
+    Label:
+        font_size: 25
+        text:"PLEASE CHOOSE THE MODE"
+        pos_hint: {'center_x': 0.5,'center_y':0.8}
+        size_hint: 0.8,0.2
+   
+    MDRectangleFlatButton:
+        font_size: 25
+        text:"Visitor Mode"
+        size_hint: 0.5,0.2
+        
+        
+        
+        pos_hint: {'center_x': 0.5,'center_y':0.6}
+        on_release: 
+            
+            app.root.current = "Visitor"
+            root.manager.transition.direction = "left"
+        on_press:
+            Snackbar(text="Clicked Visitor Mode!",bg_color =(0,1,1,1)).open()
+            
+    
+    MDRectangleFlatButton:
+        font_size: 25
+        text: "Admin Mode"
+        size_hint: 0.5,0.2
+        pos_hint: {"center_x": .5, "center_y": .25}
+        
+        on_release:
+            root.adminCheck()
+            root.manager.transition.direction = "down"
+        
+        on_press: 
+            Snackbar(text="Clicked Admin Mode!",bg_color =(0,1,1,1)).open()
+<MyTile@SmartTileWithStar>
+    size_hint_y: None
+    height: "240dp"
+
+<Check>:
+   
+
+    GridLayout:
+        
+        rows:3
+        
+        padding:(20,50,20,120)
+        GridLayout:
+            cols: 2
+            size_hint: 0.6, 0.2
+            pos_hint: {"x":0.2, "top":1}
+            padding: (0,25,0,25)
+            
+            Label:
+                text: "Password:        "
+               
+
+            TextInput:
+                password: True
+                id: password
+                font_size:20
+                
+                multiline: False
+                
+
+        Button:
+            id:submit
+            text: "Submit"
+            size_hint: 0.6, 0.1
+            pos_hint: {"x":0.1, "y":0.4}
+            background_color:0,0,1,.6
+            
+                
+    Label:
+        text: " Enter the key for authentication"
+        pos_hint: {'center_x': 0.5,'y': 0.4}
+        background_color:  0, 0, 0, 0
+
+
+<VisitorScreen>:
+
+    MDBoxLayout:
+        orientation: "vertical"
+        
+        MDToolbar:
+            title: "Visitor Mode"
+            md_bg_color: rail.md_bg_color
+        MDBoxLayout:
+            
+            MDNavigationRail:
+                id: rail
+                md_bg_color: get_color_from_hex("#344954")
+                color_normal: get_color_from_hex("#718089")
+                color_active: get_color_from_hex("#f3ab44")
+                
+            
+               
+                MDNavigationRailItem:
+                
+                    icon: "map-marker-circle"
+                    font_size: "24sp"
+                    text: "Location"
+                    
+                MDNavigationRailItem:
+                
+                    icon: "information"
+            
+                    text: "[size=15]About[/size]"
+
+                MDNavigationRailItem:
+                
+                    icon: "help-box"
+                    text: "Help"
+
+            MDBoxLayout:
+                padding: "40dp"
+                orientation: 'vertical'
+                Label:
+                    text: "Location\n"
+                    font_size:25
+                    size_hint:0.5,0.1
+                    pos_hint: {"center_x": .5, "center_y": .25}
+                ScrollView:
+
+                    MDList:
+                        id: list_box
+                        cols: 3
+                    
+                        spacing: "12dp"
+    MDRectangleFlatButton:
+        font_size: 15
+        text: "Back"
+        size_hint: 0.1,0.05
+        md_bg_color: [0,0,0,1]
+        pos_hint: {"center_x": .9, "center_y": .945}
+        
+        on_release:
+            app.root.current = "User"
+            root.manager.transition.direction = "right"
+        
+        on_press: 
+            Snackbar(text="Back to Mode!",bg_color =(0,1,1,1)).open()
+    MDRectangleFlatButton:
+        font_size: 15
+        text: "Abort"
+        size_hint: 0.1,0.05
+        md_bg_color: [0,0,0,1]
+        pos_hint: {"center_x": .5, "center_y": .05}
+        
+        on_press: root.stop()
+        on_release: 
+            Snackbar(text="Requested Abort!",bg_color =(0,1,1,1)).open()
+<AdminScreen>:
+    MDBoxLayout:
+        orientation: "vertical"
+        
+        MDToolbar:
+            title: "Admin Mode"
+            
+        TabbedPanel:
+            size_hint: .8, .8
+            pos_hint: {'center_x': 0.5,'center_y': 0.5}
+            do_default_tab: False
+            tab_height:50 
+            tab_width: 200
+            
+            
+            TabbedPanelItem:
+                text: ' Add new location'
+                BoxLayout:
+                    orientation: 'vertical'
+                    padding:50
+                    rows:3
+                    BoxLayout:
+                        cols:2
+                        # pos_hint: {'center_x': 0.5,'center_y': 0.5}
+                        Label:
+                            text: "Name"
+                        TextInput:
+                            id:new_loc
+                            multiline:False
+                            font_size:20
+                    BoxLayout:
+                        cols:2
+                        Label:
+                            text: "Description"
+                        TextInput:
+                            id:new_desc
+                            multiline:True
+                            # font_size:20
+                    BoxLayout:
+                        cols:2
+                        Label:
+                            text: "image"
+                        TextInput:
+                            id:new_img
+                            multiline:True
+                            # font_size:20
+                    Button:
+                        text: "ADD LOCATION"
+                        on_press:root.status('added') 
+            TabbedPanelItem:
+                text: ' Remove location'
+                BoxLayout:
+                    orientation: 'vertical'
+                    padding:50
+                    rows:3
+                    BoxLayout:
+                        cols:2
+                        # pos_hint: {'center_x': 0.5,'center_y': 0.5}
+                        # padding: ('0dp', '50dp', '0dp', '50dp')
+                        Label:
+                            text: "Name"
+                        TextInput:
+                            id:new_loc
+                            multiline:False
+                            font_size:20
+                    Label:
+                        text: 'Click below to remove'
+                    Button:
+                        # padding: ('50dp', '50dp', '50dp', '50dp')
+                        text: "REMOVE LOCATION"
+                        on_press:root.status('removed')
+    MDRectangleFlatButton:
+        font_size: 15
+        text: "Back"
+        size_hint: 0.1,0.05
+        md_bg_color: [0,0,0,1]
+        pos_hint: {"center_x": .9, "center_y": .945}
+        
+        on_release:
+            app.root.current = "User"
+            root.manager.transition.direction = "right"
+        
+        on_press: 
+            Snackbar(text="Back to Mode!",bg_color =(0,1,1,1)).open()
