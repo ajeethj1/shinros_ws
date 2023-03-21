@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<launch>
+
+ <node pkg="map_server" name="map_server" type="map_server" args="'$(find shinrosv_description)/maps/map2.yaml'"/>
+ 
+  
+
+
+    <!-- Joint State Publisher - Publishes Joint Positions -->
+  <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher"/>
+
+  <!-- Robot State Publisher  - Uses URDF and Joint States to compute Transforms -->
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"/>
+  
+  
+  
+ 
+
+
+
+  
+  
+
+  <include file="$(find shinrosv_description)/launch/amcl.launch" />
+  <include file="$(find shinrosv_description)/launch/move_base.launch" /> 
+  
+</launch>
+

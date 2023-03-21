@@ -1,0 +1,221 @@
+<?xml version="1.0" ?>
+<robot name="shinrosv" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+<xacro:include filename="$(find shinrosv_description)/urdf/materials.xacro" />
+<xacro:include filename="$(find shinrosv_description)/urdf/shinrosv.trans" />
+<xacro:include filename="$(find shinrosv_description)/urdf/shinrosv.gazebo" />
+<link name="base_link">
+  <inertial>
+    <origin xyz="0.01278711153237291 -5.102024887175302e-06 0.17892011623790718" rpy="0 0 0"/>
+    <mass value="32.530071826870284"/>
+    <inertia ixx="1.014259" iyy="1.32692" izz="1.053418" ixy="-3e-06" iyz="-1.4e-05" ixz="-0.02997"/>
+  </inertial>
+  <visual>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://shinrosv_description/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://shinrosv_description/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="right_back_wheel_1">
+  <inertial>
+    <origin xyz="-1.3596804238069637e-10 -0.024999999999960137 -3.059192415222345e-07" rpy="0 0 0"/>
+    <mass value="2.862252708540373"/>
+    <inertia ixx="0.002268" iyy="0.003343" izz="0.002268" ixy="-0.0" iyz="0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.215 0.187519 -0.049958" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://shinrosv_description/meshes/right_back_wheel_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.215 0.187519 -0.049958" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://shinrosv_description/meshes/right_back_wheel_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="right_front_wheel_1">
+  <inertial>
+    <origin xyz="-1.3597276082855103e-10 -0.024999999999960054 -3.059192416332568e-07" rpy="0 0 0"/>
+    <mass value="2.862252708540373"/>
+    <inertia ixx="0.002268" iyy="0.003343" izz="0.002268" ixy="0.0" iyz="0.0" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.21 0.187519 -0.049958" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://shinrosv_description/meshes/right_front_wheel_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.21 0.187519 -0.049958" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://shinrosv_description/meshes/right_front_wheel_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="left_front_wheel_1">
+  <inertial>
+    <origin xyz="3.0531133177191805e-16 0.024999573661094204 -3.059192554000223e-07" rpy="0 0 0"/>
+    <mass value="2.862252708540373"/>
+    <inertia ixx="0.002268" iyy="0.003343" izz="0.002268" ixy="0.0" iyz="0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.21 -0.187481 -0.049958" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://shinrosv_description/meshes/left_front_wheel_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.21 -0.187481 -0.049958" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://shinrosv_description/meshes/left_front_wheel_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="left_back_wheel_1">
+  <inertial>
+    <origin xyz="2.7755575615628914e-16 0.024999573661094204 -3.05919255483289e-07" rpy="0 0 0"/>
+    <mass value="2.862252708540373"/>
+    <inertia ixx="0.002268" iyy="0.003343" izz="0.002268" ixy="0.0" iyz="0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.215 -0.187481 -0.049958" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://shinrosv_description/meshes/left_back_wheel_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.215 -0.187481 -0.049958" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://shinrosv_description/meshes/left_back_wheel_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="laser">
+  <inertial>
+    <origin xyz="1.0889415202886e-09 -4.098053852721454e-17 0.009432221342134062" rpy="0 0 0"/>
+    <mass value="0.6533162141259045"/>
+    <inertia ixx="0.000237" iyy="0.000237" izz="0.000433" ixy="0.0" iyz="-0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.145 -0.0 -0.2695" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://shinrosv_description/meshes/laser_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.145 -0.0 -0.2695" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://shinrosv_description/meshes/laser_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="camera_link_1">
+  <inertial>
+    <origin xyz="0.012265238048782032 9.614656201791487e-18 0.0007500896700108894" rpy="0 0 0"/>
+    <mass value="0.4641048298473731"/>
+    <inertia ixx="0.000401" iyy="4.6e-05" izz="0.000403" ixy="0.0" iyz="-0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.06 -0.0 -0.3265" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://shinrosv_description/meshes/camera_link_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.06 -0.0 -0.3265" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://shinrosv_description/meshes/camera_link_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="imu_1">
+  <inertial>
+    <origin xyz="0.0 0.0 0.004999999999999977" rpy="0 0 0"/>
+    <mass value="0.07064999999999999"/>
+    <inertia ixx="6e-06" iyy="6e-06" izz="1.1e-05" ixy="0.0" iyz="0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.0 -0.0 -0.121" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://shinrosv_description/meshes/imu_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.0 -0.0 -0.121" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://shinrosv_description/meshes/imu_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<joint name="Revolute_10" type="fixed">
+  <origin xyz="-0.215 -0.187519 0.049958" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="right_back_wheel_1"/>
+  <axis xyz="0.0 1.0 0.0"/>
+</joint>
+
+<joint name="Revolute_11" type="fixed">
+  <origin xyz="0.21 -0.187519 0.049958" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="right_front_wheel_1"/>
+  <axis xyz="0.0 1.0 0.0"/>
+</joint>
+
+<joint name="Revolute_12" type="fixed">
+  <origin xyz="0.21 0.187481 0.049958" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="left_front_wheel_1"/>
+  <axis xyz="0.0 1.0 0.0"/>
+</joint>
+
+<joint name="Revolute_13" type="fixed">
+  <origin xyz="-0.215 0.187481 0.049958" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="left_back_wheel_1"/>
+  <axis xyz="0.0 1.0 0.0"/>
+</joint>
+
+<joint name="Rigid 15" type="fixed">
+  <origin xyz="0.145 0.0 0.2695" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="laser"/>
+</joint>
+
+<joint name="Rigid 16" type="fixed">
+  <origin xyz="0.06 0.0 0.3265" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="camera_link_1"/>
+</joint>
+
+<joint name="Rigid 17" type="fixed">
+  <origin xyz="0.0 0.0 0.121" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="imu_1"/>
+</joint>
+
+</robot>
