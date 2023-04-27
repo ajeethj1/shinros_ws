@@ -1,3 +1,4 @@
+![IMG_20230317_055804](https://user-images.githubusercontent.com/108609380/234941715-b4348b69-6bb0-42e7-91a5-6234c7ea0188.jpg)
 # shinros_ws
 Autonomous Mobile Robot for Visitor Guidance
 
